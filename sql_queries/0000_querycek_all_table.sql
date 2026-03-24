@@ -1,0 +1,32 @@
+-- Cek total baris masing masing tabel
+-- SELECT 'aw_calendar' AS table_name, COUNT(*) AS total_rows FROM aw_calendar
+-- UNION ALL
+-- SELECT 'aw_territories', COUNT(*) FROM aw_territories
+-- UNION ALL
+-- SELECT 'aw_customers', COUNT(*) FROM aw_customers
+-- UNION ALL
+-- SELECT 'aw_product_categories', COUNT(*) FROM aw_product_categories
+-- UNION ALL
+-- SELECT 'aw_product_subcategories', COUNT(*) FROM aw_product_subcategories
+-- UNION ALL
+-- SELECT 'aw_products', COUNT(*) FROM aw_products
+-- UNION ALL
+-- SELECT 'aw_returns', COUNT(*) FROM aw_returns
+-- UNION ALL
+-- SELECT 'aw_sales_2015', COUNT(*) FROM aw_sales_2015
+-- UNION ALL
+-- SELECT 'aw_sales_2016', COUNT(*) FROM aw_sales_2016
+-- UNION ALL
+-- SELECT 'aw_sales_2017', COUNT(*) FROM aw_sales_2017
+
+-- Cek tampilan data semua tabel
+-- SELECT * FROM aw_calendar
+-- SELECT * FROM aw_territories
+-- SELECT * FROM aw_customers
+-- SELECT * FROM aw_product_categories
+-- SELECT * FROM aw_product_subcategories
+-- SELECT * FROM aw_products
+-- SELECT * FROM aw_returns
+-- SELECT * FROM aw_sales_2015
+-- SELECT * FROM aw_sales_2016
+-- SELECT * FROM aw_sales_2017
