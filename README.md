@@ -18,7 +18,7 @@ Proyek ini berfokus pada evaluasi performa penjualan produk dan analisis kesehat
 
 ### Proses Diagnostic & Predictive Analytics dengan Python
 
-- Library : pandas, matplotlib, & seaborn
+- Library : pandas, matplotlib, seaborn, & statsmodels
 - IDE : VSCode (Ekstensi Jupyter by Microsoft)
 
 ---
@@ -86,7 +86,7 @@ Membuat query untuk menghitung selisih tanggal `stock_date` sampai `order_date`.
 - **Products Liquidity:** Produk lama seperti "Touring-3000 Blue, 58" harus segera dikeluarkan dengan cara pemberian diskon besar-besaran, bundling dengan produk laris, atau didonasikan sebagai CSR untuk mengurangi pajak perusahaan.
 - **Evaluasi Demand Forecasting:** Tim perencanaan Permintaan (Demand Planner) harus dievaluasi karena melakukan pembelian/produksi sehingga menyebabkan penumpukan stok (overstocking) produk "Touring-3000 Blue, 58" dan melebihi permintaan pasar.
 
-> 📁 **File:** `01_inventory_aging_data.csv` (Folder: `AdventureWorks_SupplyChain_Analysis/data/Result_Data_Query`)
+> 📁 **File:** `01_inventory_aging_data.csv` (Folder: `AdventureWorks_Inventory_and_Performance/data/Result_Data_Query`)
 
 ### 2. Product Quality & Return Rate
 
@@ -104,7 +104,7 @@ Membuat query kualitas dan tingkat pengembalian produk.
 - **Customer Feedback Analysis:** Bekerja sama dengan tim Customer Service untuk menggali akar masalah retur. Perlu dipastikan apakah sepeda dikembalikan karena rusak saat pengiriman, komponen rakitan yang tidak lengkap, atau murni karena pelanggan salah memilih ukuran.
 - **Packaging & Shipping Review:** Mengingat seluruh produk dengan retur tertinggi adalah sepeda utuh (barang berdimensi besar dan rawan benturan), perusahaan wajib mengevaluasi standar pengepakan (packaging) dan keandalan vendor logistik pihak ketiga untuk meminimalisir kerusakan fisik selama proses pengiriman.
 
-> 📁 **File:** `02_product_return_rate.csv` (Folder: `AdventureWorks_SupplyChain_Analysis/data/Result_Data_Query`)
+> 📁 **File:** `02_product_return_rate.csv` (Folder: `AdventureWorks_Inventory_and_Performance/data/Result_Data_Query`)
 
 ### 3. Regional Demand Analytics
 
@@ -122,7 +122,7 @@ Membuat query untuk menampilkan Wilayah/Negara bagian yang menghasilkan pendapat
 - **Cross-Regional Benchmarking:** Terapkan strategi best-practice logistik dari Jerman. Perusahaan dapat membedah SOP (Standard Operating Procedure) pengepakan dan layanan pelanggan di cabang Jerman untuk diimplementasikan ke cabang Prancis guna menekan angka pengembalian barang.
 - **Customer Retention Strategy:** Karena Amerika Serikat dan Australia adalah urat nadi pendapatan perusahaan, alokasikan anggaran pemasaran (marketing budget) yang lebih agresif untuk program loyalitas pelanggan (seperti VIP membership atau diskon ongkos kirim) di kedua wilayah ini demi menjaga stabilitas revenue.
 
-> 📁 **File:** `03_regional_demand_returns.csv` (Folder: `AdventureWorks_SupplyChain_Analysis/data/Result_Data_Query`)
+> 📁 **File:** `03_regional_demand_returns.csv` (Folder: `AdventureWorks_Inventory_and_Performance/data/Result_Data_Query`)
 
 ### 4. Seasonal Sales Trend
 
@@ -140,7 +140,7 @@ Membuat query untuk menampilkan timeline pesanan produk berdasarkan kategori dar
 - **Inventory Stock-Up for Peak Seasons:** Tim Logistik dan Supply Chain harus menjadikan bulan Juli-Agustus dan November-Desember sebagai Red Zone (zona sibuk). Persediaan barang pesanan reguler maupun stok pengaman (safety stock) harus sudah masuk ke gudang selambat-lambatnya 1 hingga 2 bulan sebelum periode tersebut untuk mencegah kehabisan stok (stockout) saat permintaan pasar sedang di puncaknya.
 - **Seasonal Ad Spend Allocation:** Tim Digital Marketing disarankan untuk tidak membagi rata anggaran iklan tahunan. Anggaran harus difokuskan dan "dibakar" lebih besar menjelang musim panas (Q2-Q3) dan musim liburan musim dingin (Q4) untuk memaksimalkan Return on Ad Spend (ROAS).
 
-> 📁 **File:** `04_seasonal_sales_trend.csv` (Folder: `AdventureWorks_SupplyChain_Analysis/data/Result_Data_Query`)
+> 📁 **File:** `04_seasonal_sales_trend.csv` (Folder: `AdventureWorks_Inventory_and_Performance/data/Result_Data_Query`)
 
 ---
 
@@ -148,7 +148,7 @@ Membuat query untuk menampilkan timeline pesanan produk berdasarkan kategori dar
 
 Proses visualisasi dilakukan dengan membuka Tableau Public Edition 2026.1.0 dan melakukan koneksi ke _Text File_ > _File (CSV)_. Penyimpanan dilakukan menggunakan _Save to Tableau Public As_.
 
-### Makes Visualization (Worksheet)
+### Creating Visualizations (Worksheets)
 
 Masing-masing hasil query digunakan untuk membuat sheet visualisasi:
 
@@ -157,7 +157,7 @@ Masing-masing hasil query digunakan untuk membuat sheet visualisasi:
 3. `02_product_return_rate.csv` ➡️ **Product Return Rate**
 4. `01_inventory_aging_data.csv` ➡️ **Inventory Aging Analysis**
 
-### Makes Dashboard Canvas
+### Building the Dashboard
 
 Keempat visualisasi di atas digabungkan menjadi satu kesatuan dashboard yang utuh dengan nama **Dashboard AdventureWorks-Analysis**.
 
@@ -175,3 +175,62 @@ Sebagai langkah lanjutan dari visualisasi deskriptif di Tableau, proyek ini akan
 1. **Diagnostic Analytics:** Menggali akar masalah (penyebab) di balik anomali dan metrik yang ditemukan pada **dashboard** Tableau. (Contoh: Menguji korelasi statistik antara lamanya waktu barang mengendap di gudang dengan tingginya tingkat pengembalian/retur produk).
 2. **Predictive Analytics:** Menggunakan pola penyebab dari data historis untuk mengantisipasi tren di masa depan. (Contoh: Memprediksi volume penjualan dan kebutuhan stok di musim berikutnya guna mencegah penumpukan _inventory_ atau kehabisan stok).
    _(Proses analisis Python ini dapat dilihat di dalam direktori `notebooks/` pada repositori ini)._
+
+## Diagnostic & Predictive Analytics Results (Python)
+
+1. Visualisasi boxplot
+   Pada bagian ini dilakukan uji statistik pada data _Inventory Aging_ untuk mendeteksi anomali ekstrem pada waktu mengendapnya barang di gudang.
+
+**Metodologi:**
+Menggunakan visualisasi **Boxplot Custom** dan perhitungan statistik **Interquartile Range (IQR)** untuk menentukan batas kewajaran distribusi data (_Lower Bound_ & _Upper Bound_), serta mengisolasi titik data anomali (_Outliers_).
+
+**Key Findings (Diagnostic):**
+
+- Analisis ini berhasil mengisolasi sekumpulan produk dengan waktu inap yang sangat ekstrem (hingga 4.800+ hari / ~13 Tahun).
+- Melalui perhitungan statistik ini, ditemukan bahwa anomali tersebut bersifat sistemik (kemungkinan besar akibat _delay_ pencatatan _database_ sistem lama/sintetis dari tahun 2001), bukan murni kelalaian operasional gudang (_Root Cause teridentifikasi_).
+
+**Impact on Predictive Analytics:**
+
+- **Mencegah Prediksi Meleset:** Mengisolasi data anomali 13 tahun ini memastikan perhitungan prediksi kebutuhan stok untuk musim berikutnya menjadi akurat dan dapat diandalkan oleh manajemen.
+
+2.  Analisis Korelasi (Diagnostic Analytics)
+    Mencari tau apakah barang yang mengendap paling lama di gudang adalah barang yang sama dengan yang paling banyak diretur (dikembalikan) oleh pelanggan?
+
+**Metodologi:**
+Melakukan penggabungan data (_Inner Join_) antara metrik Waktu Inap dan Tingkat Retur, kemudian menghitung nilai **Korelasi Pearson** dan memvisualisasikannya menggunakan _Scatter Plot_ dengan garis regresi linear.
+
+**Key Findings (Diagnostic):**
+
+- **Hipotesis Ditolak:** Nilai Korelasi Pearson menunjukkan angka **-0.01** (Mendekati 0). Secara statistik, tidak ada korelasi linear antara lamanya barang di gudang dengan probabilitas barang tersebut diretur.
+- Garis regresi yang mendatar (_flat_) membuktikan bahwa tingginya persentase retur pada produk tertentu (seperti _Road-650 Red_) tidak disebabkan oleh faktor penyimpanan gudang.
+
+**Actionable Insight:**
+
+- Dengan temuan tersebut maka tidak terbukti penyebab karena kelalaian tim QC maupun tim gudang hal ini bisa menjadi evaluasi tim manajemen untuk tidak menyalahkan kedua tim tersebut dan berfokus pada penyelesaian kendala dari data analisa diatas.
+- Investigasi Root Cause (akar masalah) dapat difokuskan ulang pada aspek di luar _inventory_, seperti Audit Quality Control (QC), evaluasi vendor logistik pihak ketiga (kerusakan pengiriman), atau perbaikan panduan ukuran (_sizing guide_) di platform E-Commerce.
+
+3. Predictive Analytics (Forecasting Kebutuhan Stok)
+   **Metodologi:**
+   Menggunakan algoritma **Time Series: Holt-Winters Exponential Smoothing**. Model ini dipilih karena kemampuannya yang sangat baik dalam menangkap pola tren (_trend_) sekaligus fluktuasi musiman yang berulang setiap tahun (_seasonality_).
+
+**Key Findings (Predictive):**
+
+- Model berhasil mempelajari pola historis, yaitu lonjakan ekstrem yang selalu terjadi pada pertengahan tahun (Juli-Agustus) dan akhir tahun (November-Desember).
+- **Hasil Forecast (6 Bulan Kedepan):** Model memprediksi tren yang relatif landai di awal tahun (Q1), namun memberikan **peringatan dini (early warning)** akan adanya lonjakan permintaan yang tajam saat memasuki akhir Q2 (Mei-Juni).
+
+**Business Impact (Rekomendasi Strategis):**
+
+- **Proactive Inventory Management:** Prediksi ini memungkinkan tim _Supply Chain_ untuk beralih dari strategi reaktif menjadi proaktif.
+- Perusahaan disarankan untuk menekan biaya penyimpanan (_holding cost_) di Q1 dengan meminimalisir stok, dan mengalokasikan modal (_budget_) untuk melakukan _restock_ besar-besaran di bulan April-Mei demi mencegah terjadinya _Stockout_ saat _Peak Season_ tiba.
+
+## Final Conclusion & Business Impact
+
+Kesimpulan dari analisis end-to-end menggunakan **SQL (DML)** dan visualisasi **Tableau**, yang kemudian divalidasi dan diperdalam melalui analisis statistik **Python (Machine Learning)**, menghasilkan temuan berikut:
+
+1. **Systematic Anomaly (Bukan Kesalahan Gudang):** Analisis awal di Tableau menemukan adanya pengendapan produk yang sangat lama (~13 tahun). Namun, setelah dikroscek menggunakan uji statistik di Python (IQR & Outlier Detection), terbukti bahwa waktu mengendap ekstrem ini terjadi seragam di seluruh produk. Hal ini mengonfirmasi adanya **anomali sistemik** (delay pencatatan pada database/sistem lama), bukan akibat kelalaian operasional gudang.
+2. **Kualitas Produk & Return Rate:** Hasil uji Korelasi Pearson membuktikan **tidak ada korelasi** antara lamanya produk mengendap di gudang dengan tingginya angka pengembalian (retur) produk. Oleh karena itu, evaluasi perbaikan tidak perlu difokuskan pada gudang, melainkan dialihkan pada:
+   - Peningkatan SOP vendor logistik (mencegah kerusakan pengiriman).
+   - Penyesuaian informasi _sizing guide_ dan detail spesifikasi produk pada platform _e-commerce_.
+3. **Data-Driven Restocking (Forecasting):** Hasil _Predictive Analytics_ mengonfirmasi adanya pola musiman (_seasonality_) dengan lonjakan pesanan yang konstan pada **Juli-Agustus** dan **November-Desember**.
+   - Model _Forecasting_ (Holt-Winters) telah menyajikan prediksi volume pesanan untuk 6 bulan ke depan.
+   - **Rekomendasi:** Tim _Demand Planner_ dan Gudang dapat menekan biaya penyimpanan (_holding cost_) dengan mengurangi stok di bulan-bulan sepi, dan mengalokasikan modal untuk _restock_ masif sekitar 2-3 bulan sebelum estimasi lonjakan pesanan terjadi.
