@@ -229,14 +229,14 @@ Melakukan penggabungan data (_Inner Join_) antara metrik Waktu Inap dan Tingkat 
 Kesimpulan dari analisis end-to-end menggunakan **SQL (DML)** dan visualisasi **Tableau**, yang kemudian divalidasi dan diperdalam melalui analisis statistik **Python (Machine Learning)**, menghasilkan temuan berikut:
 
 1. **Systematic Anomaly (Bukan Kesalahan Gudang):** Analisis awal di Tableau menemukan adanya pengendapan produk yang sangat lama (~13 tahun). Namun, setelah dikroscek menggunakan uji statistik di Python (IQR & Outlier Detection), terbukti bahwa waktu mengendap ekstrem ini terjadi seragam di seluruh produk. Hal ini mengonfirmasi adanya **anomali sistemik** (delay pencatatan pada database/sistem lama), bukan akibat kelalaian operasional gudang.
-![Outlier Detection Boxplot](dashboards/python/outlier_detection.png)
+   ![Outlier Detection Boxplot](dashboards/python/outlier_detection.png)
 
 2. **Kualitas Produk & Return Rate:** Hasil uji Korelasi Pearson membuktikan **tidak ada korelasi** antara lamanya produk mengendap di gudang dengan tingginya angka pengembalian (retur) produk. Oleh karena itu, evaluasi perbaikan tidak perlu difokuskan pada gudang, melainkan dialihkan pada:
    - Peningkatan SOP vendor logistik (mencegah kerusakan pengiriman).
    - Penyesuaian informasi _sizing guide_ dan detail spesifikasi produk pada platform _e-commerce_.
-![Correlation Analysis](dashboards/python/Correlation_stockpiling_&_ReturnRate.png)
+     ![Correlation Analysis](dashboards/python/Correlation_stockpiling_&_ReturnRate.png)
 
 3. **Data-Driven Restocking (Forecasting):** Hasil _Predictive Analytics_ mengonfirmasi adanya pola musiman (_seasonality_) dengan lonjakan pesanan yang konstan pada **Juli-Agustus** dan **November-Desember**.
    - Model _Forecasting_ (Holt-Winters) telah menyajikan prediksi volume pesanan untuk 6 bulan ke depan.
    - **Rekomendasi:** Tim _Demand Planner_ dan Gudang dapat menekan biaya penyimpanan (_holding cost_) dengan mengurangi stok di bulan-bulan sepi, dan mengalokasikan modal untuk _restock_ masif sekitar 2-3 bulan sebelum estimasi lonjakan pesanan terjadi.
-![Sales Trend Forecasting](dashboards/python/Sales_Trend_and_Forecasting.png)
+     ![Sales Trend Forecasting](dashboards/python/Sales_Trend_and_Forecasting.png)
